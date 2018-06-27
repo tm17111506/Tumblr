@@ -7,6 +7,8 @@
 //
 
 #import "PhotosViewController.h"
+#import "PhotoCell.h"
+#import "UIImageview+AFNetworking.h"
 
 @interface PhotosViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -15,15 +17,22 @@
 
 @implementation PhotosViewController
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.posts.count;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *post = self.posts[indexPath.row];
+    NSArray *photos = post[@"photos"];
+    PhotoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell" forIndexPath:indexPath];
+    if(photos){
+        NSDictionary *photo = photos[0];
+        NSDictionary *originalSize =  photo[@"original_size"];
+        NSString *urlString = originalSize[@"url"];
+        NSURL *url = [NSURL URLWithString:urlString];
+        [cell.photoImageView setImageWithURL:url];
+    }
+    return cell;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
-    cell.textLabel.text = [NSString stringWithFormat:@"This is row %ld", (long)indexPath.row];
-    
-    return cell;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.posts.count;
 }
 
 - (void)viewDidLoad {
@@ -32,8 +41,10 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.rowHeight = 240;
     
     NSURL *url = [NSURL URLWithString:@"https://api.tumblr.com/v2/blog/humansofnewyork.tumblr.com/posts/photo?api_key=Q6vHoaVm5L1u2ZAW1fqv3Jw48gFzYVg9P0vH0VHl3GVy6quoGV"];
+    
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -48,6 +59,7 @@
             NSDictionary *responseDictionary = dataDictionary[@"response"];
             self.posts = responseDictionary[@"posts"];
             // TODO: Reload the table view
+            [self.tableView reloadData];
         }
     }];
     [task resume];

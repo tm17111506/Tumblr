@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9273BC2F20E42BCE00B8899F /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9273BC2E20E42BCE00B8899F /* PhotosViewController.m */; };
+		9273BC3320E437E300B8899F /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9273BC3220E437E300B8899F /* PhotoCell.m */; };
 		92C64FE320E427E400879827 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C64FE220E427E400879827 /* AppDelegate.m */; };
 		92C64FE920E427E500879827 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92C64FE720E427E500879827 /* Main.storyboard */; };
 		92C64FEB20E427E500879827 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92C64FEA20E427E500879827 /* Assets.xcassets */; };
@@ -21,6 +22,8 @@
 		85DBD8F4DAB989A33EB49EBF /* Pods-Tumblr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tumblr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tumblr/Pods-Tumblr.debug.xcconfig"; sourceTree = "<group>"; };
 		9273BC2D20E42BCE00B8899F /* PhotosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotosViewController.h; sourceTree = "<group>"; };
 		9273BC2E20E42BCE00B8899F /* PhotosViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotosViewController.m; sourceTree = "<group>"; };
+		9273BC3120E437E300B8899F /* PhotoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
+		9273BC3220E437E300B8899F /* PhotoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 		92C64FDE20E427E400879827 /* Tumblr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tumblr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92C64FE120E427E400879827 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		92C64FE220E427E400879827 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -86,6 +89,8 @@
 				92C64FE120E427E400879827 /* AppDelegate.h */,
 				92C64FE220E427E400879827 /* AppDelegate.m */,
 				92C64FE720E427E500879827 /* Main.storyboard */,
+				9273BC3120E437E300B8899F /* PhotoCell.h */,
+				9273BC3220E437E300B8899F /* PhotoCell.m */,
 				92C64FEA20E427E500879827 /* Assets.xcassets */,
 				92C64FEC20E427E500879827 /* LaunchScreen.storyboard */,
 				92C64FEF20E427E500879827 /* Info.plist */,
@@ -195,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9273BC3320E437E300B8899F /* PhotoCell.m in Sources */,
 				9273BC2F20E42BCE00B8899F /* PhotosViewController.m in Sources */,
 				92C64FF120E427E500879827 /* main.m in Sources */,
 				92C64FE320E427E400879827 /* AppDelegate.m in Sources */,
